@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../services/product-service';
 import { Product } from '../models/product-model';
+import { ProductDiablogComponent } from '../product-diablog/product-diablog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-products',
@@ -9,7 +11,7 @@ import { Product } from '../models/product-model';
 })
 export class ProductsComponent {
 
-  constructor(private productService: ProductService){}
+  constructor(private dialog: MatDialog, private productService: ProductService){}
   products: Product[] = [];
 
   ngOnInit(): void {
@@ -23,9 +25,13 @@ export class ProductsComponent {
     );
   }
 
-  doStuff() {
-    console.log(this.products);
-  }
-
+  showProductDialog(product: Product): void {
+    this.dialog.open(ProductDiablogComponent,
+      {
+        data: {
+          product: product
+        }
+      });
+    }
 
 }

@@ -4,5 +4,6 @@ export interface Product {
     image: String,
     description: String,
     price: number,
-    rating: number
+    rating: number,
+    categories: String[]
 }

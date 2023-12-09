@@ -1,18 +1,41 @@
-
-
-img {
-    width: 10rem;
+::ng-deep {
+  .dark-mode .mat-mdc-button.mat-mdc-button-base,
+  .dark-mode .mat-mdc-raised-button.mat-mdc-button-base,
+  .dark-mode .mat-mdc-unelevated-button.mat-mdc-button-base,
+  .dark-mode .mat-mdc-outlined-button.mat-mdc-button-base {
+    height: inherit;
+  }
 }
 
-.card {
+img {
+  width: 10rem;
+}
+
+.dark-mode {
+  .product-button {
+    height: inherit;
+  }
+}
+
+.product-button {
+  width: 100%;
+  height: inherit;
+  align-items: center;
+  .card {
     justify-content: center;
     align-items: center;
-
-    .card-footer {
-        display: flex;
-        .mat-mdc-card-content {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
+    .product-image {
+      padding-top: 0.5rem;
     }
+    .product-description {
+      padding-top: 1rem;
+    }
+    .card-footer {
+      display: flex;
+      .mat-mdc-card-content {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+      }
+    }
+  }
 }
