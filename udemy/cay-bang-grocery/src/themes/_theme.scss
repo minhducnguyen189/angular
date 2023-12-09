@@ -1,0 +1,26 @@
+@import "../../node_modules/@angular/material/theming";
+
+@include mat-core();
+
+$my-theme-primary: mat-palette($mat-deep-orange);
+$my-theme-accent: mat-palette($mat-teal, A200, A100, A400);
+$my-theme-warn: mat-palette($mat-red);
+
+$my-light-theme: mat-light-theme(
+    $my-theme-primary, $my-theme-accent, $my-theme-warn
+);
+
+$my-dark-theme-primary: mat-palette($mat-light-green);
+$my-dark-theme-accent: mat-palette($mat-orange, A200, A100, A400);
+$my-dark-theme-warn: mat-palette($mat-red);
+
+$my-dark-theme: mat-dark-theme(
+    $my-dark-theme-primary, $my-dark-theme-accent, $my-dark-theme-warn
+);
+
+
+@include angular-material-theme($my-light-theme);
+
+.dark-mode {
+    @include angular-material-theme($my-dark-theme);
+}

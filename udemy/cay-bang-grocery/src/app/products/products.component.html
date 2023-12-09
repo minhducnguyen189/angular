@@ -1,0 +1,27 @@
+<mat-grid-list cols="6" rowHeight="4:5">
+  <mat-grid-tile *ngFor="let product of products" >
+    <mat-card (click)="doStuff()" class="card">
+      <mat-card-header>
+        <mat-card-title>{{ product.name }}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="{{ product.image }}" alt="Photo of product" />
+      <mat-card-content>
+        <p>
+          {{ product.description }}
+        </p>
+      </mat-card-content>
+      <div class="card-footer">
+        <mat-card-content>
+            <p>
+              <b>Price</b>: {{ product.price }}
+            </p>
+          </mat-card-content>
+          <mat-card-content>
+            <p>
+                <b>Rating</b>: {{ product.rating }}
+            </p>
+          </mat-card-content>
+      </div>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
