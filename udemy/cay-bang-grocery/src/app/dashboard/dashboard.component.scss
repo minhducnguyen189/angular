@@ -1,6 +1,14 @@
-mat-toolbar {
+.navbar {
     display: flex;
     align-items: center;
+    justify-content: center;
+    .navbar-branch-button {
+        height: 100%;
+    }
+    .navbar-button {
+        height: 100%;
+        margin-left: 2rem;
+    }
 }
 
 .flex-stretch {
