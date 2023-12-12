@@ -1,0 +1,25 @@
+
+::ng-deep {
+    .mat-grid-tile-content {
+        display: block;
+    }
+}
+
+
+.grid-list {
+    width: inherit;
+    .grid-tile {
+        .product-image {
+            margin-left: 2rem;
+            width: 32rem;
+            height: 32rem;
+            border-radius: 2rem;
+        }
+        .product-footer {
+            justify-content: left;
+            font-weight: bold;
+        }
+    }
+}
+
+

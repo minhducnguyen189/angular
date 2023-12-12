@@ -28,9 +28,9 @@ export class ProductsComponent {
   showProductDialog(product: Product): void {
     this.dialog.open(ProductDiablogComponent,
       {
-        data: {
-          product: product
-        }
+        data: product,
+        width: '100%',
+        height: '80%'
       });
     }
 
