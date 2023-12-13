@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductDiablogComponent } from './product-diablog/product-diablog.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ProductDiablogComponent } from './product-diablog/product-diablog.compo
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ],
   providers: [
   ],
