@@ -17,61 +17,68 @@
         }
 
         .product-footer {
-            justify-content: left;
+            justify-content: center;
             font-weight: bold;
-            display: flex;
-            .total-price {
-                padding-left: 5rem;
+            display: block;
+
+            .total-price {}
+
+            input {
+                text-align: center;
+                border: 1px solid #6C757D;
+            }
+
+            input[type="number"] {
+                -webkit-appearance: textfield !important;
+                -moz-appearance: textfield !important;
+                appearance: textfield !important;
+            }
+
+            input[type=number] {
+                &::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                }
+
+                &::-webkit-outer-spin-button {
+                    -webkit-appearance: none;
+                }
+            }
+
+            .plusminus-wrapper {
+                border: 2px #dcd3d3 solid;
+                width: 10rem;
+                height: 50px;
+                padding: 10px;
+                display: flex;
+                border-radius: 15px;
+                justify-content: center;
+                align-items: center;
+
+                .plusminus {
+                    height: 100%;
+                    width: 30%;
+                    border: none;
+                    font-size: 2rem;
+                    color: var(--mdc-filled-button-label-text-color);
+                }
+
+                .num {
+                    height: 100%;
+                    width: 39%;
+                    border: none;
+                    font-size: 1.5rem;
+                }
             }
         }
 
-        $color_1: #5f5fce;
-
-        input {
-            text-align: center;
-            border: 1px solid #6C757D;
-        }
-
-        input[type="number"] {
-            -webkit-appearance: textfield !important;
-            -moz-appearance: textfield !important;
-            appearance: textfield !important;
-        }
-
-        input[type=number] {
-            &::-webkit-inner-spin-button {
-                -webkit-appearance: none;
-            }
-
-            &::-webkit-outer-spin-button {
-                -webkit-appearance: none;
+        .product-order {
+            display: block;
+            align-items: center;
+            justify-content: center;
+            .add-button {
+                font-size: 1.5rem;
+                width: 100%;
             }
         }
-
-        .wrapper {
-            border: 2px #dcd3d3 solid;
-            width: 10rem;
-            height: 50px;
-            padding: 10px;
-            display: flex;
-            border-radius: 15px;
-        }
-
-        .plusminus {
-            height: 100%;
-            width: 30%;
-            background: white;
-            border: none;
-            font-size: 40px;
-            color: $color_1;
-        }
-
-        .num {
-            height: 100%;
-            width: 39%;
-            border: none;
-            font-size: 30px;
-        }
-
     }
 }
