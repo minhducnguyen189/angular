@@ -1,15 +1,13 @@
 ::ng-deep {
-  .dark-mode .mat-mdc-button.mat-mdc-button-base,
-  .dark-mode .mat-mdc-raised-button.mat-mdc-button-base,
-  .dark-mode .mat-mdc-unelevated-button.mat-mdc-button-base,
-  .dark-mode .mat-mdc-outlined-button.mat-mdc-button-base {
+
+  .dark-mode .mat-mdc-button.mat-mdc-button-base {
     height: inherit;
   }
 }
 
 img {
   width: 10rem;
-  border-radius: 1.5rem;
+  border-radius: 0.5rem;
 }
 
 .dark-mode {
@@ -22,19 +20,24 @@ img {
   width: 100%;
   height: inherit;
   align-items: center;
+
   .card {
     justify-content: center;
     align-items: center;
     width: 15rem;
     height: 20rem;
+
     .product-image {
-      padding-top: 0.5rem;
+      margin-top: 0.5rem;
     }
+
     .product-description {
       padding-top: 1rem;
     }
+
     .card-footer {
       display: flex;
+
       .mat-mdc-card-content {
         padding-top: 1rem;
         padding-bottom: 1rem;

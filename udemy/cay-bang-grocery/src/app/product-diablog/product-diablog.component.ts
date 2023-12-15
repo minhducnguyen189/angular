@@ -15,23 +15,24 @@ export class ProductDiablogComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public product: Product) {}
 
   ngOnInit(): void {
-    console.log(this.product);
-    this.totalPrice = this.product.price * this.num;
+    this.calculatePrice();
   }
 
 
 
   handleMinus() {
     if (this.num >= 1) {
-      this.num--;  
+      this.num--;
     }
-    this.totalPrice = this.product.price * this.num;
+    this.calculatePrice();
   }
   handlePlus() {
     this.num++;
-    this.totalPrice = this.product.price * this.num;    
+    this.calculatePrice();
   }
 
-
+  calculatePrice() {
+    this.totalPrice = this.product.price * this.num;
+  }
 
 }
