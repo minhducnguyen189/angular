@@ -3,6 +3,7 @@ import { ProductService } from '../services/product-service';
 import { Product } from '../models/product-model';
 import { ProductDiablogComponent } from '../product-diablog/product-diablog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ProductFilterResult } from '../models/product-filter-result-model';
 
 @Component({
   selector: 'app-products',
@@ -16,8 +17,8 @@ export class ProductsComponent {
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(
-      (products: Product[]) => {
-        this.products = products;
+      (productFilterResult: ProductFilterResult) => {
+        this.products = productFilterResult.products;
       },
       (error) => {
         console.error('Error fetching products:', error);

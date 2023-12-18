@@ -1,3 +1,4 @@
+import { FileDetail } from "./file-detail-model";
 
 export interface Product {
     id: String,
@@ -7,5 +8,8 @@ export interface Product {
     description: String,
     price: number,
     rating: number,
-    categories: String[]
+    categories: String[],
+    images: FileDetail[],
+    createdAt: Date,
+    updatedAt: Date
 }
