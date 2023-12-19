@@ -5,10 +5,6 @@
   }
 }
 
-img {
-  width: 10rem;
-  border-radius: 0.5rem;
-}
 
 .dark-mode {
   .product-button {
@@ -29,14 +25,28 @@ img {
 
     .product-image {
       margin-top: 0.5rem;
+      max-width: 12rem;
+      min-width: 12rem;
+
+      min-height: 12rem;
+      max-height: 12rem;
+      border-radius: 0.5rem;
     }
 
     .product-title {
-
+      max-width: 12rem;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .product-description {
-      padding-top: 1rem;
+    .product-summary p {
+      max-width: 12rem;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .card-footer {

@@ -3,10 +3,14 @@
       <button mat-button class="product-button" (click)="showProductDialog(product)">
         <mat-card class="card">
           <mat-card-header>
-            <mat-card-title class="product-title">{{ product.name }}</mat-card-title>
+            <mat-card-title class="product-title">
+              {{ product.name }}
+            </mat-card-title>
           </mat-card-header>
-          <img class="product-image" mat-card-image src="{{ product.images[0].fileUrl }}" alt="Photo of product" />
-          <mat-card-content class="product-description">
+          <mat-card-content>
+            <img class="product-image" mat-card-image src="{{ product.images[0].fileUrl }}" alt="Photo of product" />
+          </mat-card-content>
+          <mat-card-content class="product-summary">
             <p>
               {{ product.summary }}
             </p>
