@@ -1,9 +1,17 @@
-import { FileDetail } from "./file-detail-model";
+
+export interface FileDetail {
+    id: String,
+    fileName: String,
+    fileExtension: String,
+    mediaType: String,
+    fileUrl: String,
+    createdAt: Date,
+    updatedAt: Date
+}
 
 export interface Product {
     id: String,
     name: String,
-    image: String,
     summary: String,
     description: String,
     price: number,
@@ -13,3 +21,9 @@ export interface Product {
     createdAt: Date,
     updatedAt: Date
 }
+
+export interface ProductFilterResult {
+    products: Product[],
+    foundNumber: number,
+    total: number
+ }

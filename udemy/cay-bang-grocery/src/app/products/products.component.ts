@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../services/product-service';
-import { Product } from '../models/product-model';
+import { Product, ProductFilterResult } from '../models/product-model';
 import { ProductDiablogComponent } from '../product-diablog/product-diablog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { ProductFilterResult } from '../models/product-filter-result-model';
 
 @Component({
   selector: 'app-products',

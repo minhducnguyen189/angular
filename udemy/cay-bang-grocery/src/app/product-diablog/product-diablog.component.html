@@ -21,9 +21,9 @@
               <h1>Price: {{product.price}}</h1>
             </div>
             <div class="plusminus-wrapper">
-              <button mat-flat-button color="primary" class="plusminus" (click)="handleMinus()">-</button>
-              <input type="number" class="num" [(ngModel)]="num" />
-              <button mat-flat-button color="primary" class="plusminus" (click)="handlePlus()">+</button>
+              <button [disabled]="isDisabled" mat-flat-button color="primary" class="plusminus" (click)="handleMinus()">-</button>
+              <input [disabled]="isDisabled" type="number" class="num" [(ngModel)]="num" />
+              <button [disabled]="isDisabled" mat-flat-button color="primary" class="plusminus" (click)="handlePlus()">+</button>
             </div>
           </div>
         </mat-grid-tile>
@@ -32,8 +32,11 @@
             <div class="total-price">
               <h1>Totals Price: {{totalPrice}}</h1>
             </div>
-            <div>
-              <button mat-flat-button color="primary" class="add-button">Add To Cart</button>
+            <div *ngIf="!addedToCart" >
+              <button (click)="handleAddToCart()" mat-flat-button color="primary" class="add-button">Add To Cart</button>
+            </div>
+            <div *ngIf="addedToCart">
+              <button (click)="cancelOrder()" mat-flat-button color="primary" class="add-button">Cancel</button>
             </div>
           </div>
         </mat-grid-tile>

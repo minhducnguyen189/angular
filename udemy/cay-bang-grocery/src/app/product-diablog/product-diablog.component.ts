@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Order } from '../models/order-model';
 import { Product } from '../models/product-model';
 
 @Component({
@@ -11,14 +12,15 @@ export class ProductDiablogComponent implements OnInit {
 
   num: number = 1;
   totalPrice: number = 0;
+  addedToCart: boolean = false;
+  isDisabled: boolean = false;
+  order: Order | undefined;
 
   constructor(@Inject(MAT_DIALOG_DATA) public product: Product) {}
 
   ngOnInit(): void {
     this.calculatePrice();
   }
-
-
 
   handleMinus() {
     if (this.num >= 1) {
@@ -33,6 +35,23 @@ export class ProductDiablogComponent implements OnInit {
 
   calculatePrice() {
     this.totalPrice = this.product.price * this.num;
+  }
+
+  handleAddToCart() {
+    this.isDisabled = true;
+    this.addedToCart = true;
+    this.order = {
+      quantity: this.totalPrice,
+      selectedProduct: this.product
+    }
+  }
+
+  cancelOrder() {
+    this.isDisabled = false;
+    this.addedToCart = false;
+    this.order = undefined;
+    this.num = 1;
+    this.totalPrice = this.product.price;
   }
 
 }

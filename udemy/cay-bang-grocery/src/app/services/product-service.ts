@@ -1,8 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Product } from '../models/product-model';
+import { Product, ProductFilterResult } from '../models/product-model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ProductFilterResult } from '../models/product-filter-result-model';
 
 @Injectable({
   providedIn: 'root'
