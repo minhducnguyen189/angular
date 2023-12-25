@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Order } from '../models/order-model';
 import { Product } from '../models/product-model';
 
@@ -16,7 +16,8 @@ export class ProductDiablogComponent implements OnInit {
   isDisabled: boolean = false;
   order: Order | undefined;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public product: Product) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public product: Product,
+              public dialogRef: MatDialogRef<ProductDiablogComponent, Order>) {}
 
   ngOnInit(): void {
     this.calculatePrice();
@@ -52,6 +53,14 @@ export class ProductDiablogComponent implements OnInit {
     this.order = undefined;
     this.num = 1;
     this.totalPrice = this.product.price;
+  }
+
+  closeDialog() {
+    if (this.addedToCart) {
+      this.dialogRef.close(this.order);
+    } else {
+      this.dialogRef.close();
+    }
   }
 
 }
