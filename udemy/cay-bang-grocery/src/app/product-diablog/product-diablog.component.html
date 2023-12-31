@@ -1,29 +1,29 @@
-<button class="close-button" mat-flat-button (click)="closeDialog()" color="warn">X</button>
-<h1 mat-dialog-title>{{product.name}}</h1>
+<button class="close-button" mat-flat-button (click)="closeDialog()" color="warn">Close</button>
+<h1 mat-dialog-title>{{productOverview.product.name}}</h1>
 <mat-dialog-content class="mat-typography">
   <mat-grid-list class="grid-list" cols="2">
     <mat-grid-tile class="grid-tile">
-      <img class="product-image" src="{{ product.images[0].fileUrl }}" alt="Girl in a jacket">
+      <img class="product-image" src="{{ productOverview.product.images[0].fileUrl }}" alt="Girl in a jacket">
     </mat-grid-tile>
     <mat-grid-tile class="grid-tile">
       <div>
-        <h1>{{product.summary}}</h1>
-        <h2>Categories: {{product.categories}}</h2>
-        <h2>Rating: {{product.rating}}</h2>
+        <h1>{{productOverview.product.summary}}</h1>
+        <h2>Categories: {{productOverview.product.categories}}</h2>
+        <h2>Rating: {{productOverview.product.rating}}</h2>
       </div>
       <div>
-        <h2>{{product.description}}</h2>
+        <h2>{{productOverview.product.description}}</h2>
       </div>
       <mat-grid-list class="grid-list" cols="2">
         <mat-grid-tile class="grid-tile">
           <div class="product-footer">
             <div>
-              <h1>Price: {{product.price}}</h1>
+              <h1>Price: {{productOverview.product.price}}</h1>
             </div>
             <div class="plusminus-wrapper">
-              <button [disabled]="isDisabled" mat-flat-button color="primary" class="plusminus" (click)="handleMinus()">-</button>
-              <input [disabled]="isDisabled" type="number" class="num" [(ngModel)]="num" />
-              <button [disabled]="isDisabled" mat-flat-button color="primary" class="plusminus" (click)="handlePlus()">+</button>
+              <button [disabled]="this.productOverview.isAddedToCart" mat-flat-button color="primary" class="plusminus" (click)="handleMinus()">-</button>
+              <input [disabled]="this.productOverview.isAddedToCart" type="number" class="num" [(ngModel)]="num" />
+              <button [disabled]="this.productOverview.isAddedToCart" mat-flat-button color="primary" class="plusminus" (click)="handlePlus()">+</button>
             </div>
           </div>
         </mat-grid-tile>
@@ -32,10 +32,10 @@
             <div class="total-price">
               <h1>Totals Price: {{totalPrice}}</h1>
             </div>
-            <div *ngIf="!addedToCart" >
+            <div *ngIf="!productOverview.isAddedToCart" >
               <button (click)="handleAddToCart()" mat-flat-button color="primary" class="add-button">Add To Cart</button>
             </div>
-            <div *ngIf="addedToCart">
+            <div *ngIf="productOverview.isAddedToCart">
               <button (click)="cancelOrder()" mat-flat-button color="warn" class="add-button">Cancel</button>
             </div>
           </div>

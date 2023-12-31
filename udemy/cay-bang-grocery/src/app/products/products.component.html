@@ -1,29 +1,30 @@
-<mat-grid-list *ngIf="products" cols="6" rowHeight="4:5">
-    <mat-grid-tile *ngFor="let product of products" >
-      <button mat-button class="product-button" (click)="showProductDialog(product)">
+<mat-grid-list *ngIf="productOverviews" cols="6" rowHeight="4:5">
+    <mat-grid-tile *ngFor="let productOverview of productOverviews" >
+      <button mat-button class="product-button" (click)="showProductDialog(productOverview)">
         <mat-card class="card">
           <mat-card-header>
             <mat-card-title class="product-title">
-              {{ product.name }}
+              <mat-icon *ngIf="productOverview.isAddedToCart" aria-hidden="false" style="color:#4CAF50" aria-label="Example home icon" fontIcon="check_circle"></mat-icon>
+              {{ productOverview.product.name }}
             </mat-card-title>
           </mat-card-header>
           <mat-card-content>
-            <img class="product-image" mat-card-image src="{{ product.images[0].fileUrl }}" alt="Photo of product" />
+            <img class="product-image" mat-card-image src="{{ productOverview.product.images[0].fileUrl }}" alt="Photo of product" />
           </mat-card-content>
           <mat-card-content class="product-summary">
             <p>
-              {{ product.summary }}
+              {{ productOverview.product.summary }}
             </p>
           </mat-card-content>
           <div class="card-footer">
             <mat-card-content>
                 <p>
-                  <b>Price</b>: {{ product.price }}
+                  <b>Price</b>: {{ productOverview.product.price }}
                 </p>
               </mat-card-content>
               <mat-card-content>
                 <p>
-                    <b>Rating</b>: {{ product.rating }}
+                    <b>Rating</b>: {{ productOverview.product.rating }}
                 </p>
               </mat-card-content>
           </div>

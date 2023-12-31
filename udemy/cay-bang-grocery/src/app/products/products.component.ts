@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../services/product-service';
-import { Product, ProductFilterResult } from '../models/product-model';
+import { ProductFilterResult, ProductOverview } from '../models/product-model';
 import { ProductDiablogComponent } from '../product-diablog/product-diablog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { Order } from '../models/order-model';
 
 @Component({
   selector: 'app-products',
@@ -13,13 +12,16 @@ import { Order } from '../models/order-model';
 export class ProductsComponent {
 
   constructor(private dialog: MatDialog, private productService: ProductService){}
-  products: Product[] = [];
-  orders: Order[] = [];
+  productOverviews: ProductOverview[] = [];
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(
       (productFilterResult: ProductFilterResult) => {
-        this.products = productFilterResult.products;
+        this.productOverviews = productFilterResult.products.map(product => ({
+          product: product,
+          orderQuantity: 0,
+          isAddedToCart: false
+        }));
       },
       (error) => {
         console.error('Error fetching products:', error);
@@ -27,23 +29,17 @@ export class ProductsComponent {
     );
   }
 
-  showProductDialog(product: Product): void {
+  showProductDialog(productOverview: ProductOverview): void {
     const diablog = this.dialog.open(ProductDiablogComponent,
       {
-        data: product,
+        data: productOverview,
         width: '100%',
         height: '80%',
         disableClose: true,
         hasBackdrop: true 
       });
       
-    diablog.afterClosed().subscribe(
-      (data: Order) => {
-        if (data) {
-          this.orders.push(data);
-        }
-      }
-    );
+    // diablog.afterClosed().subscribe();
   }
 
 }

@@ -10,6 +10,8 @@ import { ProductsComponent } from './products/products.component';
 import { ProductDiablogComponent } from './product-diablog/product-diablog.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ConfirmtationDiablogComponent } from './confirmtation-diablog/confirmtation-diablog.component';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     DashboardComponent,
     ProductsComponent,
-    ProductDiablogComponent
+    ProductDiablogComponent,
+    ConfirmtationDiablogComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

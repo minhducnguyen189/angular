@@ -1,11 +1,11 @@
 
 <mat-toolbar color="primary" class="navbar">
-    <button class="navbar-branch-button" mat-button>
+    <button class="navbar-branch-button" mat-button routerLink="shopping-list">
         <h1>Cay Bang Grocery</h1>
     </button>
     
-    <button class="navbar-button" mat-button>Shopping List</button>
-    <button class="navbar-button" mat-button>Cart</button>
+    <button class="navbar-button" mat-button routerLink="shopping-list">Shopping List</button>
+    <button class="navbar-button" mat-button routerLink="cart">Cart</button>
 
     <div class="flex-stretch"></div>
     <mat-icon class="mr-8">brightness_5</mat-icon>
@@ -15,5 +15,5 @@
 </mat-toolbar>
 
 <div class="content mat-app-background">
-    <app-products></app-products>
+    <router-outlet></router-outlet>
 </div>

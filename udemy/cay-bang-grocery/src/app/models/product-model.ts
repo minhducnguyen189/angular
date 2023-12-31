@@ -22,6 +22,12 @@ export interface Product {
     updatedAt: Date
 }
 
+export interface ProductOverview {
+    isAddedToCart: boolean,
+    orderQuantity: number,
+    product: Product
+}
+
 export interface ProductFilterResult {
     products: Product[],
     foundNumber: number,

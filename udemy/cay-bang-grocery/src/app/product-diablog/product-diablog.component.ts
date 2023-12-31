@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Order } from '../models/order-model';
-import { Product } from '../models/product-model';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { ProductOverview } from '../models/product-model';
+import { ConfirmtationDiablogComponent } from '../confirmtation-diablog/confirmtation-diablog.component';
 
 @Component({
   selector: 'app-product-diablog',
@@ -12,12 +12,10 @@ export class ProductDiablogComponent implements OnInit {
 
   num: number = 1;
   totalPrice: number = 0;
-  addedToCart: boolean = false;
-  isDisabled: boolean = false;
-  order: Order | undefined;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public product: Product,
-              public dialogRef: MatDialogRef<ProductDiablogComponent, Order>) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public productOverview: ProductOverview,
+              public dialog: MatDialog,
+              public dialogRef: MatDialogRef<ProductDiablogComponent, ProductOverview>) {}
 
   ngOnInit(): void {
     this.calculatePrice();
@@ -35,29 +33,38 @@ export class ProductDiablogComponent implements OnInit {
   }
 
   calculatePrice() {
-    this.totalPrice = this.product.price * this.num;
+    this.totalPrice = this.productOverview.product.price * this.num;
   }
 
   handleAddToCart() {
-    this.isDisabled = true;
-    this.addedToCart = true;
-    this.order = {
-      quantity: this.totalPrice,
-      selectedProduct: this.product
-    }
+    this.productOverview.isAddedToCart = true;
+    this.productOverview.orderQuantity = this.num;
   }
 
   cancelOrder() {
-    this.isDisabled = false;
-    this.addedToCart = false;
-    this.order = undefined;
-    this.num = 1;
-    this.totalPrice = this.product.price;
+    const diablog = this.dialog.open(ConfirmtationDiablogComponent,
+    {
+      data: this.productOverview,
+      disableClose: true,
+      hasBackdrop: true 
+    });
+    diablog.afterClosed().subscribe(
+      (data: boolean) => {
+        if (data) {
+          if (data && data === true) {
+            this.productOverview.isAddedToCart = false;
+            this.productOverview.orderQuantity = 0;
+            this.num = 1;
+            this.totalPrice = this.productOverview.product.price;
+          }
+        }
+      }
+    );
   }
 
   closeDialog() {
-    if (this.addedToCart) {
-      this.dialogRef.close(this.order);
+    if (this.productOverview.isAddedToCart) {
+      this.dialogRef.close(this.productOverview);
     } else {
       this.dialogRef.close();
     }
