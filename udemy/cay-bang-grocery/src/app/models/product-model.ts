@@ -1,22 +1,22 @@
 
 export interface FileDetail {
-    id: String,
-    fileName: String,
-    fileExtension: String,
-    mediaType: String,
-    fileUrl: String,
+    id: string,
+    fileName: string,
+    fileExtension: string,
+    mediaType: string,
+    fileUrl: string,
     createdAt: Date,
     updatedAt: Date
 }
 
 export interface Product {
-    id: String,
-    name: String,
-    summary: String,
-    description: String,
+    id: string,
+    name: string,
+    summary: string,
+    description: string,
     price: number,
     rating: number,
-    categories: String[],
+    categories: string[],
     images: FileDetail[],
     createdAt: Date,
     updatedAt: Date
