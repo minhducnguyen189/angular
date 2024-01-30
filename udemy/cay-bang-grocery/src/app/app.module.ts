@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmtationDiablogComponent } from './confirmtation-diablog/confirmtation-diablog.component';
 import { CartComponent } from './cart/cart.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { CartComponent } from './cart/cart.component';
     ProductsComponent,
     ProductDiablogComponent,
     ConfirmtationDiablogComponent,
-    CartComponent
+    CartComponent,
+    TopBarComponent
   ],
   imports: [
     BrowserModule,

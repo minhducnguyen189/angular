@@ -10,26 +10,9 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class DashboardComponent implements OnInit {
 
-  @HostBinding('class') className='';
 
-  toggleControl = new FormControl(false);
-
-  constructor(private dialog: MatDialog, private overlayContainer: OverlayContainer) {
-
-  }
   ngOnInit(): void {
-    this.toggleControl.valueChanges.subscribe(val => {
-      const darkModeClass = 'dark-mode';
-      this.className = val ? darkModeClass : '';
-      const classes = this.overlayContainer.getContainerElement().classList;
-      if (val) {
-        classes.add(darkModeClass);
-      } else {
-        classes.remove(darkModeClass);
-      }
-    });
+    
   }
-
-
 
 }

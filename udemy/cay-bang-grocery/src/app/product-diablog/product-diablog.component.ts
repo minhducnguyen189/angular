@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { ProductOverview } from '../models/product-model';
 import { ConfirmtationDiablogComponent } from '../confirmtation-diablog/confirmtation-diablog.component';
+import { SessionStorageService } from '../services/session-storage.service';
 
 @Component({
   selector: 'app-product-diablog',
@@ -15,7 +16,8 @@ export class ProductDiablogComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public productOverview: ProductOverview,
               public dialog: MatDialog,
-              public dialogRef: MatDialogRef<ProductDiablogComponent, ProductOverview>) {}
+              public dialogRef: MatDialogRef<ProductDiablogComponent, ProductOverview>,
+              private sessionStorageService: SessionStorageService) {}
 
   ngOnInit(): void {
     this.calculatePrice();
@@ -39,6 +41,7 @@ export class ProductDiablogComponent implements OnInit {
   handleAddToCart() {
     this.productOverview.isAddedToCart = true;
     this.productOverview.orderQuantity = this.num;
+    this.sessionStorageService.storeSelectedProduct(this.productOverview);
   }
 
   cancelOrder() {
@@ -50,13 +53,12 @@ export class ProductDiablogComponent implements OnInit {
     });
     diablog.afterClosed().subscribe(
       (data: boolean) => {
-        if (data) {
-          if (data && data === true) {
-            this.productOverview.isAddedToCart = false;
-            this.productOverview.orderQuantity = 0;
-            this.num = 1;
-            this.totalPrice = this.productOverview.product.price;
-          }
+        if (data && data === true) {
+          this.productOverview.isAddedToCart = false;
+          this.productOverview.orderQuantity = 0;
+          this.sessionStorageService.removeSelectedProduct(this.productOverview);
+          this.num = 1;
+          this.totalPrice = this.productOverview.product.price;
         }
       }
     );
