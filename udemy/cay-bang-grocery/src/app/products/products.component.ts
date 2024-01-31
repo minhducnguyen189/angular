@@ -3,6 +3,7 @@ import { ProductService } from '../services/product.service';
 import { ProductFilterResult, ProductOverview } from '../models/product-model';
 import { ProductDiablogComponent } from '../product-diablog/product-diablog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { SessionStorageService } from '../services/session-storage.service';
 
 @Component({
   selector: 'app-products',
@@ -11,7 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ProductsComponent {
 
-  constructor(private dialog: MatDialog, private productService: ProductService){}
+  constructor(private dialog: MatDialog, private productService: ProductService, private sessionStorageService: SessionStorageService){}
   productOverviews: ProductOverview[] = [];
 
   ngOnInit(): void {
@@ -22,9 +23,13 @@ export class ProductsComponent {
           orderQuantity: 0,
           isAddedToCart: false
         }));
-      },
-      (error) => {
-        console.error('Error fetching products:', error);
+        const selectedProducts = this.sessionStorageService.getSelectedProducts();
+        this.productOverviews.filter(p => selectedProducts.some((product) => p.product.id === product.product.id))
+        .map(product => {
+          let selectedProduct = selectedProducts.find(p => p.product.id === product.product.id);
+          product.orderQuantity = selectedProduct?.orderQuantity || 0;
+          product.isAddedToCart = selectedProduct?.isAddedToCart || false;
+        });
       }
     );
   }

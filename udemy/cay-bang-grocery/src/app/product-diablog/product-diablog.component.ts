@@ -20,6 +20,7 @@ export class ProductDiablogComponent implements OnInit {
               private sessionStorageService: SessionStorageService) {}
 
   ngOnInit(): void {
+    this.num = this.productOverview.orderQuantity;
     this.calculatePrice();
   }
 
