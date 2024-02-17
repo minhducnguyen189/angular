@@ -1,1 +1,17 @@
-<app-dashboard></app-dashboard>
+<mat-toolbar color="primary" class="navbar">
+    <button class="navbar-branch-button" mat-button routerLink="shopping-list">
+        <h1>Cay Bang Grocery</h1>
+    </button>
+    
+    <button class="navbar-button" mat-button routerLink="shopping-list">Shopping List</button>
+    <button class="navbar-button" mat-button routerLink="cart">Cart</button>
+
+    <div class="flex-stretch"></div>
+    <mat-icon class="mr-8">brightness_5</mat-icon>
+    <mat-slide-toggle [formControl]="toggleControl" class="mr-8">
+    </mat-slide-toggle>
+    <mat-icon>bedtime</mat-icon>
+</mat-toolbar>
+<div class="mat-app-background">
+    <router-outlet></router-outlet>
+</div>

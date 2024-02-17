@@ -1,13 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductsComponent } from './products/products.component';
 import { CartComponent } from './cart/cart.component';
-import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: '', redirectTo: '/shopping-list', pathMatch: 'full' },
   { path: 'shopping-list', component: ProductsComponent },
   { path: 'cart', component: CartComponent },
 ];
