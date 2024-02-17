@@ -33,7 +33,7 @@
               <h1>Totals Price: {{totalPrice}}</h1>
             </div>
             <div *ngIf="!productOverview.isAddedToCart" >
-              <button (click)="handleAddToCart()" mat-flat-button color="primary" class="add-button">Add To Cart</button>
+              <button [disabled]="num < 1" (click)="handleAddToCart()" mat-flat-button color="primary" class="add-button">Add To Cart</button>
             </div>
             <div *ngIf="productOverview.isAddedToCart">
               <button (click)="cancelOrder()" mat-flat-button color="warn" class="add-button">Cancel</button>

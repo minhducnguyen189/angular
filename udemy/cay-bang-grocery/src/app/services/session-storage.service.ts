@@ -35,5 +35,9 @@ export class SessionStorageService {
     sessionStorage.setItem("products", JSON.stringify(newProducts));
   }
 
+  removeAllSelectedProduct() {
+    sessionStorage.setItem("products", JSON.stringify([]));
+  }
+
 
 }

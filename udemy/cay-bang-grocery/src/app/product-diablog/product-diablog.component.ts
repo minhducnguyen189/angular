@@ -20,7 +20,7 @@ export class ProductDiablogComponent implements OnInit {
               private sessionStorageService: SessionStorageService) {}
 
   ngOnInit(): void {
-    this.num = this.productOverview.orderQuantity;
+    this.num = this.productOverview.orderQuantity || 1;
     this.calculatePrice();
   }
 
@@ -48,7 +48,7 @@ export class ProductDiablogComponent implements OnInit {
   cancelOrder() {
     const diablog = this.dialog.open(ConfirmtationDiablogComponent,
     {
-      data: this.productOverview,
+      data: this.productOverview.product.name,
       disableClose: true,
       hasBackdrop: true 
     });

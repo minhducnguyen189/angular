@@ -1,1 +1,98 @@
-<p>cart works!</p>
+<mat-grid-list cols="2" rowHeight="1:1">
+    <mat-grid-tile class="left-gird">
+        <h1>Cart Overview</h1>
+        <table mat-table [dataSource]="selectedProducts" class="summary-table mat-elevation-z8">
+            <ng-container matColumnDef="item">
+              <th mat-header-cell *matHeaderCellDef> Item </th>
+              <td mat-cell *matCellDef="let selectedProduct"> {{selectedProduct.product.name}} </td>
+              <td mat-footer-cell *matFooterCellDef> Total </td>
+            </ng-container>
+
+            <ng-container matColumnDef="price">
+                <th mat-header-cell *matHeaderCellDef> Price </th>
+                <td mat-cell *matCellDef="let selectedProduct"> {{selectedProduct.product.price | currency}} </td>
+                <td mat-footer-cell *matFooterCellDef>  </td>
+              </ng-container>
+
+            <ng-container matColumnDef="quantity">
+                <th mat-header-cell *matHeaderCellDef> Quantity </th>
+                <td mat-cell *matCellDef="let selectedProduct"> {{selectedProduct.orderQuantity}} </td>
+                <td mat-footer-cell *matFooterCellDef> {{getTotalQuantity()}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="cost">
+              <th mat-header-cell *matHeaderCellDef> Cost </th>
+              <td mat-cell *matCellDef="let selectedProduct"> {{selectedProduct.product.price * selectedProduct.orderQuantity | currency}} </td>
+              <td mat-footer-cell *matFooterCellDef> {{getTotalCost() | currency}} </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+          </table>
+          <button (click)="clearCart()" mat-flat-button color="warn" class="add-button">Clear Cart</button>          
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <h1>Order Information</h1>
+        <mat-grid-list cols="2" rowHeight="1:1">
+            <mat-grid-tile>
+                <mat-form-field class="example-full-width">
+                    <mat-label>First Name</mat-label>
+                    <input type="text" matInput [formControl]="order.firstName" [errorStateMatcher]="matcher"
+                        placeholder="Ex. John">
+                    <mat-error *ngIf="order.firstName.hasError('required')">
+                        First Name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput [formControl]="order.email" [errorStateMatcher]="matcher"
+                        placeholder="Ex. pat@example.com">
+                    <mat-error *ngIf="order.email.hasError('email') && !order.email.hasError('required')">
+                    Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="order.email.hasError('required')">
+                    Email is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Sex</mat-label>
+                    <input type="text" matInput [formControl]="order.sex" placeholder="Ex. Male">
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Last Name</mat-label>
+                    <input type="text" matInput [formControl]="order.lastName" [errorStateMatcher]="matcher"
+                        placeholder="Ex. Wick">
+                    <mat-error *ngIf="order.lastName.hasError('required')">
+                    Last name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Phone</mat-label>
+                    <input type="text" matInput [formControl]="order.phone" [errorStateMatcher]="matcher"
+                        placeholder="Ex. 0704123456">
+                    <mat-error *ngIf="order.phone.hasError('required')">
+                    Phone is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Address</mat-label>
+                    <input type="text" matInput [formControl]="order.phone" [errorStateMatcher]="matcher"
+                        placeholder="Ex. 3/115 Cay Bang Street">
+                    <mat-error *ngIf="order.address.hasError('required')">
+                    Address is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <button mat-flat-button color="warn" class="add-button">Order</button>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-grid-tile>
+
+
+
+</mat-grid-list>
+
+
+  

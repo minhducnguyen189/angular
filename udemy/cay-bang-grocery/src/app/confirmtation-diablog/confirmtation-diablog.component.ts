@@ -9,7 +9,7 @@ import { Product } from '../models/product-model';
 })
 export class ConfirmtationDiablogComponent {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public product: Product,
+  constructor(@Inject(MAT_DIALOG_DATA) public productName: String,
               public dialogRef: MatDialogRef<ConfirmtationDiablogComponent, boolean>) {}
 
 
