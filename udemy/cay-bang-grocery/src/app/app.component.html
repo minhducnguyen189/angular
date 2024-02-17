@@ -4,7 +4,10 @@
     </button>
     
     <button class="navbar-button" mat-button routerLink="shopping-list">Shopping List</button>
-    <button class="navbar-button" mat-button routerLink="cart">Cart</button>
+    <button class="navbar-button" mat-button routerLink="cart">
+        <span class="material-icons shopping-bag-icon">shopping_bag</span>
+        <span *ngIf="getSelectedProductNumber()" class="badge badge-warning" id="lblCartCount"> {{ getSelectedProductNumber() }}</span>
+    </button>
 
     <div class="flex-stretch"></div>
     <mat-icon class="mr-8">brightness_5</mat-icon>

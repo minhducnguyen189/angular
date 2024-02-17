@@ -2,6 +2,7 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { SessionStorageService } from './services/session-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +14,7 @@ export class AppComponent implements OnInit {
   @HostBinding('class') className='';
 
   toggleControl = new FormControl(false);
-
-  constructor(private dialog: MatDialog, private overlayContainer: OverlayContainer) {
+  constructor(private dialog: MatDialog, private overlayContainer: OverlayContainer, private sessionStorageService: SessionStorageService) {
 
   }
 
@@ -29,6 +29,11 @@ export class AppComponent implements OnInit {
         classes.remove(darkModeClass);
       }
     });
+    this.getSelectedProductNumber();
   }
-  title = 'cay-bang-grocery';
+
+  getSelectedProductNumber() {
+    return this.sessionStorageService.getSelectedProducts().length;
+  }
+
 }
