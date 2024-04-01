@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { SessionStorageService } from '../services/session-storage.service';
 import { ProductOverview } from '../models/product-model';
 import { FormControl, Validators } from '@angular/forms';
-import { Order } from '../models/order-model';
+import { Order, OrderDetail } from '../models/order-model';
 import { CustomErrorStateMatcher } from '../shared/error-state-matcher';
 import { ConfirmtationDiablogComponent } from '../confirmtation-diablog/confirmtation-diablog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { OrderService } from '../services/order.service';
 
 @Component({
   selector: 'app-cart',
@@ -17,9 +18,11 @@ export class CartComponent implements OnInit {
   selectedProducts: ProductOverview[] = []
   order!: Order;
   matcher = new CustomErrorStateMatcher();
+  orderDetail!: OrderDetail;
 
   constructor(public dialog: MatDialog,
-              private sessionStorageService: SessionStorageService) {
+              private sessionStorageService: SessionStorageService,
+              private orderService: OrderService) {
 
   }
 
@@ -60,6 +63,18 @@ export class CartComponent implements OnInit {
           }
         }
       );
+  }
+
+  createOrder() {
+    this.orderService.createOrder({
+      firstName: this.order.firstName.value,
+      lastName: this.order.lastName.value,
+      email: this.order.email.value,
+      phone: this.order.phone.value,
+      address: this.order.address.value,
+      sex: this.order.sex.value
+    })
+    .subscribe(detail => this.orderDetail = detail);
   }
 
 }
