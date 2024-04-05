@@ -1,5 +1,5 @@
 {
-  "name": "browser-printer-integration",
+  "name": "browser-ngx-print-integration",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
