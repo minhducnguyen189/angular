@@ -9,7 +9,7 @@ import { ServerElement } from './server-element.model';
 export class ServerElementComponent {
 
 
-    @Input()
+    @Input('servElement')
     serverElement!: ServerElement;
 
 

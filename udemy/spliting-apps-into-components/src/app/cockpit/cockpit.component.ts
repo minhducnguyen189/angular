@@ -11,7 +11,7 @@ export class CockpitComponent {
   newServerName = '';
   newServerContent = '';
 
-  @Output()
+  @Output('servElement')
   serverElement: EventEmitter<ServerElement> = new EventEmitter<ServerElement>();
 
   onAddServer() {
