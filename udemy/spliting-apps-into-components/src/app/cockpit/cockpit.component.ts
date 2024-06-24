@@ -14,17 +14,17 @@ export class CockpitComponent {
   @Output('servElement')
   serverElement: EventEmitter<ServerElement> = new EventEmitter<ServerElement>();
 
-  onAddServer() {
-   const element: ServerElement = this.buildServerElement('server');
+  onAddServer(serverNameInput: HTMLInputElement) {
+   const element: ServerElement = this.buildServerElement('server', serverNameInput.value);
    this.serverElement.emit(element);
   }
 
-  onAddBlueprint() {
-    const element: ServerElement = this.buildServerElement('blueprint');
+  onAddBlueprint(serverNameInput: HTMLInputElement) {
+    const element: ServerElement = this.buildServerElement('blueprint', serverNameInput.value);
     this.serverElement.emit(element);
   }
 
-  private buildServerElement(serverType: string): ServerElement {
+  private buildServerElement(serverType: string, serverName: string): ServerElement {
       return {
         type: serverType,
         name: this.newServerName,
