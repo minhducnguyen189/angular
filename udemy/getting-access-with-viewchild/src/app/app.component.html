@@ -1,0 +1,13 @@
+<div class="container">
+  <app-cockpit (servElement)="addServerElement($event)"></app-cockpit>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <div
+        class="panel panel-default"
+        *ngFor="let element of serverElements">
+        <app-server-element [servElement]="element"></app-server-element>
+      </div>
+    </div>
+  </div>
+</div>
