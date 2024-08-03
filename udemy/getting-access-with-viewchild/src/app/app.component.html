@@ -6,7 +6,12 @@
       <div
         class="panel panel-default"
         *ngFor="let element of serverElements">
-        <app-server-element [servElement]="element"></app-server-element>
+        <app-server-element [servElement]="element">
+          <p>
+            <strong *ngIf="element.type === 'server'" style="color: red">{{ element.content }}</strong>
+            <em *ngIf="element.type === 'blueprint'" style="color: blue">{{ element.content }}</em>
+          </p>
+        </app-server-element>
       </div>
     </div>
   </div>
