@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <h1>Control Center</h1>
+      <div>
+      <h2>Add new Servers or blueprints!</h2>
+      <app-cockpit (servElement)="addServerElement($event)"></app-cockpit>
+      </div>
+      <hr>
+      <div>
+        <h2>Get Last Server Name!</h2>
+        <button class="btn btn-primary" (click)="changeServerName()">Get Last Server Name</button>
+        <button class="btn btn-danger ms-2" (click)="destroyServers()">Destroy Servers</button>
+      </div>
+      <hr>
+    </div>
+    <div class="col-lg-6">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Servers</h1>
+          <div class="panel panel-default" *ngFor="let element of serverElements">
+            <app-server-element [servElement]="element">
+              <p>
+                <strong *ngIf="element.type === 'server'" style="color: red">Content: {{ element.content }}</strong>
+                <em *ngIf="element.type === 'blueprint'" style="color: blue">Content: {{ element.content }}</em>
+              </p>
+              <p>
+                <strong *ngIf="element.type === 'server'" style="color: red">Type: {{ element.type }}</strong>
+                <em *ngIf="element.type === 'blueprint'" style="color: blue">Type: {{ element.type }}</em>
+              </p>
+              <hr>
+            </app-server-element>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <h1>Last Server Name</h1>
+          <app-lifecycle-demo *ngIf="!destroyComponent" [serverName]="lastServerName"></app-lifecycle-demo>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
